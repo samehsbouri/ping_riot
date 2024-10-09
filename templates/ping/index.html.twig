@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Ping Result</h1>
+<form action="{{ path('app_ping') }}" method="get">
+    <label for="host">Enter host to ping:</label>
+    <input type="text" id="host" name="host" value="{{ host }}" required>
+    <button type="submit">Ping</button>
+</form>
+<div class="result">
+    {% if ping is defined %}
+        <p>Approximate round trip time: {{ ping }} ms</p>
+    {% else %}
+        <p>{{ errorMessage }}</p>
+    {% endif %}
+</div>
+</body>
+</html>
